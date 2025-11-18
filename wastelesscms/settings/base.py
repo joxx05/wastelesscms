@@ -129,15 +129,18 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
-
+LANGUAGE_CODE = "vi"
+LANGUAGES = [
+    ('vi', "Vietnamese"),
+    ('en', "English"),
+]
 TIME_ZONE = "America/New_York"
 
-USE_I18N = False
+USE_I18N = True
 
 USE_TZ = True
-
-
+WAGTAIL_I18N_ENABLED = True
+WAGTAIL_CONTENT_LANGUAGES = LANGUAGES
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
