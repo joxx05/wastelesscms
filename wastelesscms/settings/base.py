@@ -194,3 +194,4 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # custom implementation.
 CRX_DISABLE_NAVBAR = True
 CRX_DISABLE_FOOTER = True
+
