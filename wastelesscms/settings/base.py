@@ -195,10 +195,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 CRX_DISABLE_NAVBAR = True
 CRX_DISABLE_FOOTER = True
 
-CODEREDCMS_BLOCK_ADVANCED_FEATURES = {
-    "custom_css": True,
-    "custom_id": True,
-    "custom_class": True,
-    "custom_style": True,
-    "custom_attributes": True,  # <-- Cái bạn cần
-}
+WAGTAILADMIN_RICH_TEXT_ALLOWED_STYLES = ['background-color', 'color', 'text-align']
+WAGTAIL_ALLOW_STYLE_ATTRIBUTE = True

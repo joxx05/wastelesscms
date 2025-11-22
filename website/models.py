@@ -2,8 +2,6 @@
 Create or customize your page models here.
 """
 
-from coderedcms.blocks import HTML_STREAMBLOCKS
-from coderedcms.blocks import LAYOUT_STREAMBLOCKS
 from coderedcms.blocks import BaseBlock
 from coderedcms.blocks import BaseLinkBlock
 from coderedcms.blocks import LinkStructValue
@@ -24,13 +22,20 @@ from wagtail import blocks
 from wagtail.admin.panels import FieldPanel
 from wagtail.fields import StreamField
 from wagtail.snippets.models import register_snippet
-
-
+from .collections_blocks import CONTENT_STREAMBLOCKS
+from .collections_blocks import LAYOUT_STREAMBLOCKS
+from .collections_blocks import HTML_STREAMBLOCKS
+from .collections_blocks import NAVIGATION_STREAMBLOCKS
 class ArticlePage(CoderedArticlePage):
     """
     Article, suitable for news or blog content.
     """
-
+    body = StreamField(
+        CONTENT_STREAMBLOCKS,
+        null=True,
+        blank=True,
+        use_json_field=True,
+    )
     class Meta:
         verbose_name = "Article"
         ordering = ["-first_published_at"]
@@ -45,7 +50,12 @@ class ArticleIndexPage(CoderedArticleIndexPage):
     """
     Shows a list of article sub-pages.
     """
-
+    body = StreamField(
+        LAYOUT_STREAMBLOCKS,
+        null=True,
+        blank=True,
+        use_json_field=True,
+    )
     class Meta:
         verbose_name = "Article Landing Page"
 
@@ -59,6 +69,12 @@ class ArticleIndexPage(CoderedArticleIndexPage):
     
 
 class EventPage(CoderedEventPage):
+    body = StreamField(
+        LAYOUT_STREAMBLOCKS,
+        null=True,
+        blank=True,
+        use_json_field=True,
+    )
     class Meta:
         verbose_name = "Event Page"
 
@@ -70,7 +86,12 @@ class EventIndexPage(CoderedEventIndexPage):
     """
     Shows a list of event sub-pages.
     """
-
+    body = StreamField(
+        LAYOUT_STREAMBLOCKS,
+        null=True,
+        blank=True,
+        use_json_field=True,
+    )
     class Meta:
         verbose_name = "Events Landing Page"
 
@@ -135,7 +156,12 @@ class LocationIndexPage(CoderedLocationIndexPage):
     A page that holds a list of locations and displays them with a Google Map.
     This does require a Google Maps API Key in Settings > CRX Settings
     """
-
+    body = StreamField(
+        LAYOUT_STREAMBLOCKS,
+        null=True,
+        blank=True,
+        use_json_field=True,
+    )
     class Meta:
         verbose_name = "Location Landing Page"
 
@@ -152,7 +178,12 @@ class WebPage(CoderedWebPage):
     """
     General use page with featureful streamfield and SEO attributes.
     """
-
+    body = StreamField(
+        LAYOUT_STREAMBLOCKS,
+        null=True,
+        blank=True,
+        use_json_field=True,
+    )
     class Meta:
         verbose_name = "Web Page"
 
