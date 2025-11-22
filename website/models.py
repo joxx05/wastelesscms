@@ -41,7 +41,6 @@ class ArticlePage(CoderedArticlePage):
     template = "coderedcms/pages/article_page.html"
     search_template = "coderedcms/pages/article_page.search.html"
 
-
 class ArticleIndexPage(CoderedArticleIndexPage):
     """
     Shows a list of article sub-pages.
@@ -57,7 +56,7 @@ class ArticleIndexPage(CoderedArticleIndexPage):
     subpage_types = ["website.ArticlePage"]
 
     template = "coderedcms/pages/article_index_page.html"
-
+    
 
 class EventPage(CoderedEventPage):
     class Meta:

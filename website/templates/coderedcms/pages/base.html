@@ -11,6 +11,7 @@
 
 {% block custom_assets %}
 {# Add your custom CSS here #}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2/dist/aos.css">
 <link rel="stylesheet" href="{% static 'website/css/custom.css' %}">
 {% endblock %}
 
@@ -22,4 +23,47 @@
 {% block custom_scripts %}
 {# Add your custom JavaScript here, or delete the line below if you don't need any #}
 <script src="{% static 'website/js/custom.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2/dist/aos.js"></script>
+<script>
+(function(){
+
+    // Pattern fade-up-200, zoom-in-300, flip-left-500,...
+    const aosPattern = /(fade-(?:up|down|left|right|in|out)|zoom-in|zoom-out|flip-up|flip-down|flip-left|flip-right)-(\d+)/;
+
+    function applyAOS(){
+        document.querySelectorAll("[class]").forEach(el => {
+            const classes = el.className.split(/\s+/);
+            classes.forEach(cls => {
+                const match = cls.match(aosPattern);
+                if (match) {
+                    const effect = match[1];
+                    const duration = match[2];
+                    el.setAttribute("data-aos", effect);
+                    el.setAttribute("data-aos-duration", duration);
+                }
+            });
+        });
+
+        // Khởi tạo lại AOS mỗi lần update
+        if (AOS) AOS.refreshHard();
+    }
+
+    // 1. Chạy khi trang load xong
+    window.onload = function(){
+        applyAOS();
+    };
+
+    // 2. Chạy khi DOM thay đổi (Wagtail load block, CodeRed update layout...)
+    const observer = new MutationObserver(() => {
+        applyAOS();
+    });
+
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+
+})();
+</script>
+
 {% endblock %}
